@@ -1,21 +1,21 @@
 name: GetManager
 permissions:
-  contents: write  # Allow writing to repository contents (for pushing tags)
-  actions: read   # Allows triggering actions
+  contents: write  # 允许写入仓库内容（用于推送标签）
+  actions: read   # 允许触发操作
 
 on:
-  workflow_call: # This allows this workflow to be called from another workflow
+  workflow_call: # 这允许从另一个工作流调用此工作流
     inputs:
       kernelsu_variant:
         required: true
         type: string
     outputs:
       susVer:
-        description: "The fetched SUSFS version number"
+        description: "获取的 SUSFS 版本号"
         value: ${{ jobs.get_ksu_manager.outputs.susVer }}
 
       ksuVer:
-        description: "The calculated KSU version number"
+        description: "计算出的 KSU 版本号"
         value: ${{ jobs.get_ksu_manager.outputs.ksuVer }}
 
 jobs:
